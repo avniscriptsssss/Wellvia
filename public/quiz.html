@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wellvia | Wellness Quiz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --lilac: #c9b5e8;
+            --light-lilac: #f4effb;
+            --rust-pink: #b85c70;
+            --dark-rust: #843d50;
+            --cream: #fffaf7;
+            --text: #493744;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f7f0fc, #fff3f0);
+            color: var(--text);
+            min-height: 100vh;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 8%;
+        }
+        .logo {
+            font-size: 30px;
+            font-weight: 700;
+            color: var(--dark-rust);
+            text-decoration: none;
+        }
+        .logo span {
+            color: var(--lilac);
+        }
+        .back-link {
+            color: var(--rust-pink);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .quiz-container {
+            max-width: 720px;
+            margin: 45px auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .quiz-tag {
+            color: var(--rust-pink);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            margin-bottom: 16px;
+        }
+        h1 {
+            font-size: clamp(30px, 5vw, 45px);
+            margin-bottom: 15px;
+        }
+        h1 span {
+            color: var(--rust-pink);
+        }
+        .description {
+            color: #796879;
+            font-size: 14px;
+            line-height: 1.8;
+            max-width: 520px;
+            margin: 0 auto 35px;
+        }
+        .quiz-card {
+            background: var(--cream);
+            border: 1px solid #e9d9ee;
+            border-radius: 24px;
+            padding: 32px;
+            text-align: left;
+            box-shadow: 0 15px 40px #843d5017;
+        }
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #806b80;
+            margin-bottom: 10px;
+        }
+        .progress-bar {
+            height: 7px;
+            background: #eee3f5;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        #progress-fill {
+            width: 20%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--lilac), var(--rust-pink));
+            transition: width 0.3s;
+        }
+        h2 {
+            font-size: 21px;
+            margin-bottom: 22px;
+        }
+        .answer-options {
+            display: grid;
+            gap: 12px;
+        }
+        .answer-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px;
+            border: 1px solid #e7d9ec;
+            border-radius: 14px;
+            background: white;
+            cursor: pointer;
+            transition: 0.25s;
+            font-size: 14px;
+        }
+        .answer-option:hover {
+            border-color: var(--lilac);
+            background: var(--light-lilac);
+            transform: translateY(-2px);
+        }
+        .answer-option:has(input:checked) {
+            border-color: var(--rust-pink);
+            background: #fff0f2;
+        }
+        .answer-option input {
+            accent-color: var(--rust-pink);
+        }
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 15px;
+            border: none;
+            border-radius: 14px;
+            background: var(--rust-pink);
+            color: white;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+        button:hover {
+            background: var(--dark-rust);
+            transform: translateY(-2px);
+        }
+        #quiz-error {
+            color: var(--dark-rust);
+            font-size: 12px;
+            margin-top: 12px;
+        }
+        .quiz-note {
+            margin-top: 25px;
+            color: #957e96;
+            font-size: 12px;
+        }
+        @media (max-width: 600px) {
+            header {
+                padding: 20px 6%;
+            }
+            .quiz-container {
+                margin: 25px auto;
+                padding: 16px;
+            }
+            .quiz-card {
+                padding: 22px 18px;
+            }
+            h2 {
+                font-size: 18px;
+            }
+        }
+        
+.result-box {
+    text-align: center;
+    line-height: 1.8;
+}
+.score {
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--rust-pink);
+    margin: 15px 0;
+}
+.result-box h3 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 22px;
+}
+.result-intro {
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+.review-item {
+    background: #fff;
+    border: 1px solid #e7d9ec;
+    border-radius: 12px;
+    padding: 14px;
+    margin-top: 12px;
+    font-size: 13px;
+    line-height: 1.7;
+}
+.review-item strong {
+    color: var(--rust-pink);
+}
+.review-item p {
+    margin-top: 5px;
+}
+.health-disclaimer {
+    margin-top: 18px;
+    color: #806b80;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">wellvia<span>.</span></a>
+        <a href="index.html" class="back-link">← Back to Home</a>
+    </header>
+    <main class="quiz-container">
+        <p class="quiz-tag">YOUR WELLNESS JOURNEY</p>
+        <h1>Let's get to know <span>you.</span></h1>
+        <p class="description">
+            Take a little moment for yourself. Answer these questions
+            to discover wellness tips tailored to your needs.
+        </p>
+        <div class="quiz-card">
+            <div class="progress-info">
+                <span id="question-count">Question 1 of 5</span>
+                <span id="progress-percent">20%</span>
+            </div>
+            <div class="progress-bar">
+                <div id="progress-fill"></div>
+            </div>
+            <div id="progress-fill"></div>
+            <form id="wellness-quiz">
+                <h2 id="question">How have you been feeling lately?</h2>
+                <div id="answer-options" class="answer-options">
+                    <label class="answer-option">
+                        <input type="radio" name="answer" value="happy">
+                        <span>😊 Happy and positive</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="answer" value="okay">
+                        <span>😌 Mostly okay</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="answer" value="stressed">
+                        <span>😣 Stressed or overwhelmed</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="answer" value="low">
+                        <span>🌧️ A little low lately</span>
+                    </label>
+                </div>
+                <p id="quiz-error"></p>
+                <button type="submit" id="next-button">
+                    Next Question →
+                </button>
+            </form>
+        </div>
+        <p class="quiz-note">♡ No pressure, just a little self-care.</p>
+    </main>
+   <script src="quiz.js"></script>
+    <script src="quiz.js"></script>
+</body>
+</html>

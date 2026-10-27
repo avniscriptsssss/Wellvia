@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Conditions | Wellvia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --lilac: #c9b5e8;
+            --lilac-light: #f4effb;
+            --rust-pink: #b85c70;
+            --dark-rust: #843d50;
+            --cream: #fffaf7;
+            --text: #493744;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background: var(--cream);
+        }
+        .navbar {
+            background: rgba(255, 250, 247, 0.96) !important;
+            border-bottom: 1px solid #eee2f3;
+        }
+        .navbar-brand,
+        .footer-brand {
+            font-weight: 800;
+            font-size: 1.7rem;
+            color: var(--dark-rust) !important;
+        }
+        .navbar-brand span,
+        .footer-brand span {
+            color: var(--lilac);
+        }
+        .nav-link {
+            color: #655365;
+            font-weight: 500;
+            margin: 0 3px;
+        }
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--rust-pink) !important;
+        }
+        .nav-cta {
+            background: var(--rust-pink);
+            color: white !important;
+            border-radius: 999px;
+            padding: 10px 17px !important;
+        }
+        .nav-cta:hover {
+            background: var(--dark-rust);
+        }
+        .hero {
+            padding: 100px 0 95px;
+            background: linear-gradient(
+                135deg,
+                #f4effb 0%,
+                #fff3f0 100%
+            );
+        }
+        .hero-label,
+        .section-label {
+            display: inline-block;
+            color: var(--rust-pink);
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 17px;
+        }
+        .hero h1 {
+            font-size: clamp(2.7rem, 6vw, 4.7rem);
+            font-weight: 800;
+            line-height: 1.12;
+            letter-spacing: -2px;
+            margin-bottom: 22px;
+        }
+        .hero h1 span {
+            color: var(--rust-pink);
+        }
+        .hero p {
+            max-width: 650px;
+            color: #766879;
+            line-height: 1.85;
+            margin-bottom: 28px;
+        }
+        .btn-primary-custom,
+        .btn-light-custom {
+            display: inline-block;
+            text-decoration: none;
+            border-radius: 999px;
+            padding: 14px 25px;
+            font-weight: 700;
+            transition: 0.2s ease;
+        }
+        .btn-primary-custom {
+            color: white;
+            background: var(--rust-pink);
+            box-shadow: 0 8px 20px #b85c702b;
+        }
+        .btn-primary-custom:hover {
+            color: white;
+            background: var(--dark-rust);
+            transform: translateY(-2px);
+        }
+        .features {
+            padding: 85px 0;
+        }
+        .section-title {
+            font-weight: 800;
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            margin-bottom: 13px;
+        }
+        .section-description {
+            max-width: 650px;
+            margin: 0 auto;
+            color: #796879;
+            line-height: 1.8;
+        }
+        .feature-card {
+            height: 100%;
+            padding: 28px;
+            background: #fffdfc;
+            border: 1px solid #eadff0;
+            border-radius: 22px;
+            box-shadow: 0 12px 32px #843d500b;
+            transition: transform 0.25s,
+                        box-shadow 0.25s,
+                        border-color 0.25s;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--lilac);
+            box-shadow: 0 18px 38px #843d5015;
+        }
+        .feature-icon {
+            display: grid;
+            place-items: center;
+            width: 58px;
+            height: 58px;
+            border-radius: 18px;
+            background: var(--lilac-light);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        .feature-card h3 {
+            font-size: 1.2rem;
+            font-weight: 750;
+            margin-bottom: 12px;
+        }
+        .feature-card p {
+            color: #796879;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+        .feature-link {
+            display: inline-block;
+            color: var(--rust-pink);
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 5px;
+        }
+        .feature-link:hover {
+            color: var(--dark-rust);
+        }
+        .wellness-banner {
+            padding: 75px 0;
+            color: white;
+            background: linear-gradient(
+                120deg,
+                var(--dark-rust),
+                var(--rust-pink)
+            );
+        }
+        .wellness-banner h2 {
+            font-weight: 800;
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            margin-bottom: 18px;
+        }
+        .wellness-banner p {
+            max-width: 760px;
+            line-height: 1.9;
+            margin: 0 auto 25px;
+            color: #fff4f5;
+        }
+        .btn-light-custom {
+            color: var(--dark-rust);
+            background: var(--cream);
+        }
+        .btn-light-custom:hover {
+            color: var(--dark-rust);
+            background: var(--lilac-light);
+            transform: translateY(-2px);
+        }
+        footer {
+            background: #fbf7fc;
+            padding: 40px 0 25px;
+            border-top: 1px solid #eee2f3;
+        }
+        .footer-text {
+            color: #806f80;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+        .footer-link {
+            display: inline-block;
+            color: var(--rust-pink);
+            text-decoration: none;
+            margin: 5px 0 5px 18px;
+            font-weight: 600;
+        }
+        .footer-link:hover {
+            color: var(--dark-rust);
+        }
+        .footer-divider {
+            border-color: #e8dceb;
+            margin: 25px 0 18px;
+        }
+        @media (max-width: 767px) {
+            .hero {
+                padding: 72px 0 65px;
+            }
+            .features {
+                padding: 60px 0;
+            }
+            .feature-card {
+                padding: 23px;
+            }
+            .footer-link {
+                margin-left: 0;
+                margin-right: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                Wellvia<span>.</span>
+            </a>
+            <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarContent"
+                aria-controls="navbarContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="conditions.html">
+                            Health Conditions
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="prevention.html">
+                            Prevention
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="quiz.html">Health Quiz</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item ms-lg-2">
+                        <a class="nav-link nav-cta" href="#conditions">
+                            Explore Conditions
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container text-center">
+            <span class="hero-label">
+                🩺 UNDERSTAND YOUR HEALTH
+            </span>
+            <h1>
+                Know More.<br>
+                <span>Care Better.</span>
+            </h1>
+            <p class="mx-auto">
+                Explore educational information about common health
+                conditions, their symptoms, risk factors, and ways
+                to seek appropriate care.
+            </p>
+            <a href="#conditions" class="btn-primary-custom">
+                Explore Conditions ↓
+            </a>
+        </div>
+    </section>
+    <!-- Health Conditions -->
+    <section class="features" id="conditions">
+        <div class="container">
+            <div class="text-center mb-5">
+                <div class="section-label">HEALTH LIBRARY</div>
+                <h2 class="section-title">
+                    Explore Health Conditions
+                </h2>
+                <p class="section-description">
+                    Learn the basics about common health topics.
+                    This information supports awareness, not self-diagnosis.
+                </p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">❤️</div>
+                        <h3>Heart Health</h3>
+                        <p>
+                            Learn about cardiovascular health, common
+                            risk factors, and habits that support your heart.
+                        </p>
+                        <a href="#heart" class="feature-link">
+                            Learn More →
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">🩸</div>
+                        <h3>Diabetes</h3>
+                        <p>
+                            Understand blood glucose, common types of
+                            diabetes, risk factors, and ongoing care.
+                        </p>
+                        <a href="#diabetes" class="feature-link">
+                            Learn More →
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">🫁</div>
+                        <h3>Respiratory Health</h3>
+                        <p>
+                            Explore conditions that affect breathing,
+                            including asthma, and learn about common triggers.
+                        </p>
+                        <a href="#respiratory" class="feature-link">
+                            Learn More →
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">🧠</div>
+                        <h3>Mental Well-being</h3>
+                        <p>
+                            Learn about stress, anxiety, emotional well-being,
+                            and the importance of seeking support.
+                        </p>
+                        <a href="#mental" class="feature-link">
+                            Learn More →
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">🦴</div>
+                        <h3>Bone & Joint Health</h3>
+                        <p>
+                            Discover the basics of bone strength, joint
+                            health, and conditions such as arthritis.
+                        </p>
+                        <a href="#bones" class="feature-link">
+                            Learn More →
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">🛡️</div>
+                        <h3>Infections</h3>
+                        <p>
+                            Understand how infections spread, common
+                            symptoms, and the role of prevention.
+                        </p>
+                        <a href="#infections" class="feature-link">
+                            Learn More →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Detailed Information -->
+    <section class="features" style="background: var(--lilac-light);">
+        <div class="container">
+            <div class="text-center mb-5">
+                <div class="section-label">THE BASICS</div>
+                <h2 class="section-title">
+                    Understand the Essentials
+                </h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6" id="heart">
+                    <div class="feature-card">
+                        <h3>❤️ Heart Health</h3>
+                        <p>
+                            Cardiovascular conditions affect the heart and
+                            blood vessels. High blood pressure, smoking,
+                            inactivity, and some other factors can increase
+                            cardiovascular risk.
+                        </p>
+                        <p>
+                            <strong>Helpful habit:</strong> Stay active,
+                            eat a balanced diet, and attend recommended
+                            health check-ups.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6" id="diabetes">
+                    <div class="feature-card">
+                        <h3>🩸 Diabetes</h3>
+                        <p>
+                            Diabetes affects how the body regulates blood
+                            glucose. Different types have different causes
+                            and treatment needs.
+                        </p>
+                        <p>
+                            <strong>Helpful step:</strong> Seek professional
+                            advice about screening, testing, and care if
+                            you have concerns or risk factors.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6" id="respiratory">
+                    <div class="feature-card">
+                        <h3>🫁 Respiratory Health</h3>
+                        <p>
+                            Respiratory conditions affect the lungs and
+                            airways. Asthma can cause wheezing, coughing,
+                            chest tightness, or shortness of breath.
+                        </p>
+                        <p>
+                            <strong>Helpful habit:</strong> Avoid smoke
+                            and known triggers, and follow a clinician's
+                            treatment plan when prescribed.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6" id="mental">
+                    <div class="feature-card">
+                        <h3>🧠 Mental Well-being</h3>
+                        <p>
+                            Mental health influences how people think,
+                            feel, cope with stress, and connect with others.
+                            Anyone can need support at times.
+                        </p>
+                        <p>
+                            <strong>Helpful step:</strong> Reach out to a
+                            trusted person or qualified mental health
+                            professional if difficulties persist.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6" id="bones">
+                    <div class="feature-card">
+                        <h3>🦴 Bone & Joint Health</h3>
+                        <p>
+                            Bones and joints support movement. Conditions
+                            such as osteoporosis and arthritis can affect
+                            strength, comfort, or mobility.
+                        </p>
+                        <p>
+                            <strong>Helpful habit:</strong> Maintain
+                            appropriate physical activity and discuss
+                            bone health with a healthcare professional.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6" id="infections">
+                    <div class="feature-card">
+                        <h3>🛡️ Infections</h3>
+                        <p>
+                            Infections can be caused by viruses, bacteria,
+                            fungi, or parasites. Symptoms and treatments
+                            depend on the cause.
+                        </p>
+                        <p>
+                            <strong>Helpful habit:</strong> Wash your hands,
+                            follow recommended vaccination guidance, and
+                            seek care when needed.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Important Notice -->
+    <section class="wellness-banner">
+        <div class="container text-center">
+            <h2>Your Health Deserves Proper Care</h2>
+            <p>
+                Wellvia provides general educational information.
+                It cannot diagnose conditions or replace advice from
+                a qualified healthcare professional. Seek urgent medical
+                help for severe or sudden symptoms.
+            </p>
+            <a href="prevention.html" class="btn-light-custom">
+                Explore Prevention →
+            </a>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row align-items-center gy-3">
+                <div class="col-md-5">
+                    <div class="footer-brand">
+                        Wellvia<span>.</span>
+                    </div>
+                    <p class="footer-text mb-0">
+                        Making health education easier to understand.
+                    </p>
+                </div>
+                <div class="col-md-7 text-md-end">
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="conditions.html" class="footer-link">Conditions</a>
+                    <a href="prevention.html" class="footer-link">Prevention</a>
+                    <a href="about.html" class="footer-link">About</a>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <p class="footer-text mb-0">
+                © 2026 Wellvia. All rights reserved.
+                Educational information only — not medical advice.
+            </p>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

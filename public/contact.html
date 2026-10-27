@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us | Wellvia</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f5efff;color:#44334b;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.contact{background:#fff;border-radius:20px;padding:35px;width:100%;max-width:500px;box-shadow:0 8px 25px #6d50751a}
+h1{text-align:center;color:#a64f63;margin-top:0}
+p{text-align:center;color:#77677e}
+label{display:block;margin:16px 0 7px;font-weight:600}
+input,textarea{width:100%;padding:12px;border:1px solid #dfcfe9;border-radius:9px;font:inherit;background:#fdfaff}
+input:focus,textarea:focus{outline:2px solid #c5a5df}
+button{width:100%;padding:13px;margin-top:20px;border:0;border-radius:9px;background:#ad586b;color:white;font-size:16px;cursor:pointer}
+button:hover{background:#914457}
+#status{text-align:center;margin-bottom:0}
+a{color:#a64f63}
+</style>
+</head>
+<body>
+<div class="contact">
+<h1>Contact Wellvia 💗</h1>
+<p>Questions or feedback? We'd love to hear from you!</p>
+<form id="contactForm">
+<label for="name">Your Name</label>
+<input id="name" name="name" required>
+<label for="email">Email Address</label>
+<input id="email" name="email" type="email" required>
+<label for="message">Message / Feedback</label>
+<textarea id="message" name="message" rows="5" required></textarea>
+<button type="submit">Send Message 💌</button>
+<p id="status"></p>
+</form>
+</div>
+<script>
+document.getElementById("contactForm").addEventListener("submit",async function(e){
+e.preventDefault();
+const status=document.getElementById("status");
+status.textContent = "⏳ Your message is being sent...";
+alert("Your message is being sent! 💌");
+const data={name:this.name.value.trim(),email:this.email.value.trim(),message:this.message.value.trim()};
+try{
+const response=await fetch("/api/contacts",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)});
+const result=await response.json();
+if(!response.ok)throw new Error(result.error||"Failed to send.");
+status.textContent="Message sent successfully! 💗";
+this.reset();
+}catch(error){status.textContent="Could not send message. Please try again.";}
+});
+</script>
+</body>
+</html>
